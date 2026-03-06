@@ -1,18 +1,27 @@
-# ML Model Deployment API
+# Futurisys - ML Model Deployment API (POC)
 
-Production-ready deployment of a Machine Learning model using:
+API FastAPI exposant un modèle de Machine Learning via des endpoints REST, avec bonnes pratiques
+d’ingénierie logicielle : tests Pytest, base PostgreSQL, CI/CD et gestion de versions Git.
 
-- FastAPI
+
+## Stack
+- Python 3.11+
+- FastAPI + Uvicorn
+- Scikit-learn (ou autre) + Joblib
 - PostgreSQL
-- Pytest
-- GitHub Actions (CI/CD)
+- Pytest + pytest-cov
+- GitHub Actions
 
-## Installation
 
-```bash``
+## Installation (local)
+```bash
+git clone <repo>
+cd futurisys-ml-api
 python -m venv .venv
-source .venv/bin/activate
+source .venv/bin/activate  # (Windows: .venv\Scripts\activate)
 pip install -r requirements.txt
+```
+
 
 ## Project Structure
 
@@ -21,6 +30,7 @@ tests/ → Unit tests
 models/ → Trained model
 scripts/ → DB scripts
 .github/workflows/ → CI/CD
+
 
 futurisys-ml-api/
 ├─ app/
@@ -72,6 +82,7 @@ futurisys-ml-api/
 └─ pyproject.toml            # optionnel (si tu préfères à requirements)
 
 
+
 ## Versioning
 
 - main → stable
@@ -79,4 +90,11 @@ futurisys-ml-api/
 - Tags → semantic versioning (v0.1.0, v1.0.0)
 
 
+
+## Objectifs
+- Exposer le modèle ML via une API FastAPI (Swagger/OpenAPI intégré)
+- Garantir la fiabilité via des tests unitaires et fonctionnels (Pytest + coverage)
+- Tracer les requêtes/réponses dans PostgreSQL
+- Automatiser tests et déploiement via CI/CD (GitHub Actions)
+- Gérer les secrets via variables d’environnement (12-factor)
 
