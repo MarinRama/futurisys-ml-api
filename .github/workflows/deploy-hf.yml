@@ -9,6 +9,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: prod
 
     steps:
         # 1️⃣ Récupérer le code du repository

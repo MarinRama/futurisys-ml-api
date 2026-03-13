@@ -98,3 +98,33 @@ futurisys-ml-api/
 - Automatiser tests et déploiement via CI/CD (GitHub Actions)
 - Gérer les secrets via variables d’environnement (12-factor)
 
+
+
+## Environments
+
+The project uses three environments:
+
+### Development (dev)
+Local development environment used by developers.
+
+- Runs on the developer machine
+- Uses `.env` configuration
+- Used to develop and debug the API
+
+### Test (test)
+Automated testing environment.
+
+- Executed by GitHub Actions
+- Runs unit tests with Pytest
+- Validates the code before merging to `main`
+
+### Production (prod)
+Production deployment environment.
+
+- Hosted on Hugging Face Spaces
+- Automatically deployed from the `main` branch
+- Uses secrets and environment variables for configuration
+
+Sensitive variables are stored securely:
+- GitHub Secrets (for CI/CD)
+- Hugging Face Space Secrets (for production)
