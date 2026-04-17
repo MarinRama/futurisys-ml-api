@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 from app.api.schemas import PredictionRequest, PredictionResponse
 from app.ml.predict import make_prediction
 
@@ -17,11 +17,8 @@ def health():
 
 @router.post("/predict", response_model=PredictionResponse)
 def predict(data: PredictionRequest):
-    features = [
-        data.feature_1,
-        data.feature_2,
-        data.feature_3,
-        data.feature_4,
-    ]
-    prediction = make_prediction(features)
-    return PredictionResponse(prediction=prediction)
+    try:
+        result = make_prediction(data.model_dump())
+        return PredictionResponse(**result)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
