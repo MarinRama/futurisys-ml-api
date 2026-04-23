@@ -8,3 +8,6 @@ joblib
 pytest
 pytest-cov
 httpx
+
+sqlalchemy
+psycopg2-binary
